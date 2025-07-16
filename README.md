@@ -1,37 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Suryansh Rohil – Developer Portfolio
 
-## Getting Started
+This is a personal portfolio website designed and developed by me to showcase selected projects, technical skills, and interests in full-stack development and cybersecurity. The portfolio emphasizes interactive design, dynamic content, and modern UI/UX principles.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The portfolio serves as a central platform to present work across multiple domains including:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* Full-stack web development
+* Frontend user interface design
+* Backend service and API architecture
+* Cybersecurity-focused implementations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Some project features live previews, source code links, tech stack badges, and embedded video demonstrations where available.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+* Custom category-based project filtering with animated transitions
+* Project cards with motion effects and interactive hover states
+* Animated timeline and about sections for professional context
+* Responsive design tailored for all screen sizes
+* Integrated GitHub, LinkedIn, Instagram, and Discord profiles
+* Parallax effects for background layers and mouse movement
+* Smooth page transitions using Framer Motion
+* Theming and styling based on project categories
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Next.js
+* React
+* Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Projects Showcased
 
-## Deploy on Vercel
+The portfolio includes a selection of real-world and academic projects with focus on:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Healthcare and AI (e.g., medical assistant platform)
+* E-commerce frontend development
+* Backend systems using Go and MySQL
+* Smart transport solutions for urban infrastructure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Portfolio
+## About the Developer
+
+I am a Computer Science undergraduate with a deep interest in building scalable systems, secure applications, and user-centric interfaces. With experience in both frontend and backend technologies, he aims to bridge the gap between design, logic, and performance.
+
+## Contact
+
+For collaboration, queries, or feedback, reach out through:
+
+* GitHub: github.com/s-uryansh
+* LinkedIn: linkedin.com/in/suryansh-rohil
+* Instagram: instagram.com/suryansh.rohil
+* Discord: gladflashislive
+* Mail: suryanshrohilwork@gmail.com
+
+---
