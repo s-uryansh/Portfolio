@@ -1,6 +1,6 @@
-`use client`;
+'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -29,7 +29,7 @@ export default function FloatingIcons() {
     }, []);
 
     // Generate non-overlapping positions with mobile considerations
-    const generateNonOverlappingPositions = () => {
+    const generateNonOverlappingPositions = useCallback(() => {
         const newPositions: Pos[] = [];
         const minDistance = isMobile ? 120 : 200; // Smaller distance for mobile
         const maxAttempts = 50;
@@ -94,11 +94,11 @@ export default function FloatingIcons() {
         }
 
         return newPositions;
-    };
+    }, [isMobile]);
 
     useEffect(() => {
         setPositions(generateNonOverlappingPositions());
-    }, [isMobile]);
+    }, [generateNonOverlappingPositions]);
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {

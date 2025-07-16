@@ -93,7 +93,7 @@ export default function HomeHero() {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 1 }}
                         >
-                            "Code. Secure. Create."
+                            &quot;Code. Secure. Create.&quot;
                         </motion.h1>
                         
                         <motion.p
@@ -102,7 +102,7 @@ export default function HomeHero() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 1.2 }}
                         >
-                            Building tomorrow's web, one secure line at a time
+                            Building tomorrow&apos;s web, one secure line at a time
                         </motion.p>
                         
                         <motion.div

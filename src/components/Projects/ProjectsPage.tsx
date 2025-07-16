@@ -106,7 +106,7 @@ export default function ProjectsPage() {
                                 <span className="text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text font-semibold">
                                     projects
                                 </span>{' '}
-                                and see what I've been building
+                                and see what I&apos;ve been building
                             </motion.p>
                         </div>
                     </motion.div>

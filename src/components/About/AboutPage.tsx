@@ -279,7 +279,7 @@ export default function AboutPage() {
                                         className="space-y-4 sm:space-y-6 text-white/80 leading-relaxed text-base sm:text-lg"
                                     >
                                         <p>
-                                            I'm Suryansh Rohil, an enthusiastic full-stack developer who can create scalable web apps and has a keen interest in cybersecurity.
+                                            I&apos;m Suryansh Rohil, an enthusiastic full-stack developer who can create scalable web apps and has a keen interest in cybersecurity.
                                         </p>
                                         <p>
                                             With practical experience and increasing skills in cloud platforms, React, and Next.js, I build creative solutions that strike a balance between functionality and user experience.

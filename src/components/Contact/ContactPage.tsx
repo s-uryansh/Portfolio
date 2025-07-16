@@ -100,7 +100,7 @@ export default function ContactPage() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: 0.4 }} // Faster: 1s → 0.4s, delay 1.2s → 0.4s
                             >
-                                Let's{' '}
+                                Let&apos;s{' '}
                                 <span className="text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text font-semibold">
                                     collaborate
                                 </span>{' '}
@@ -108,7 +108,7 @@ export default function ContactPage() {
                                 <span className="text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text font-semibold">
                                     amazing
                                 </span>{' '}
-                                together. Reach out and let's start the conversation!
+                                together. Reach out and let&apos;s start the conversation!
                             </motion.p>
                         </motion.div>
 

@@ -88,7 +88,7 @@ export default function HomeContact() {
                         transition={{ duration: 1, delay: 0.4 }}
                         viewport={{ once: true }}
                     >
-                        Ready to collaborate or have a question? Let's connect and build something amazing together.
+                        Ready to collaborate or have a question? Let&apos;s connect and build something amazing together.
                     </motion.p>
                     
                     {/* Contact Form - Quick Contact */}
