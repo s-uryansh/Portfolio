@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { FaGithub, FaExternalLinkAlt, FaCode, FaServer, FaLaptopCode, FaShieldAlt, FaPlay, FaArrowRight, FaArrowLeft, FaTimes } from 'react-icons/fa';
 
 interface Project {
@@ -24,8 +25,20 @@ interface ProjectCardProps {
     index: number;
 }
 
+// Define proper type for theme
+interface ThemeType {
+    gradient: string;
+    border: string;
+    glow: string;
+    icon: React.ComponentType<{ className?: string }>;
+    iconColor: string;
+    badge: string;
+    accentColor: string;
+    particleColors: string[];
+}
+
 // Helper function to get particle colors based on theme and index
-function getParticleColors(theme: any, index: number): string {
+function getParticleColors(theme: ThemeType, index: number): string {
     const colors = {
         fullstack: ['#60a5fa', '#a855f7', '#06b6d4'],
         frontend: ['#34d399', '#10b981', '#14b8a6'],
@@ -41,7 +54,7 @@ function getParticleColors(theme: any, index: number): string {
 }
 
 // Category themes for flash cards
-const categoryThemes = {
+const categoryThemes: Record<string, ThemeType> = {
     fullstack: {
         gradient: 'from-slate-900/95 via-blue-900/90 to-purple-900/95',
         border: 'border-blue-500/30',
@@ -93,7 +106,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
     // Predefined particle positions that are consistent between server and client
     const BackgroundParticles = () => {
-        // Static positions that won't change between server and client renders
         const particlePositions = [
             { top: 15, left: 20 },
             { top: 35, left: 80 },
@@ -114,7 +126,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 {particlePositions.map((position, i) => (
                     <motion.div
                         key={`${project.category}-${i}`}
-                        className={`absolute w-2 h-2 rounded-full`}
+                        className="absolute w-2 h-2 rounded-full"
                         style={{
                             top: `${position.top}%`,
                             left: `${position.left}%`,
@@ -126,9 +138,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                             scale: [1, 1.2, 1]
                         }}
                         transition={{
-                            duration: 2 + i * 0.3, // Faster: 3 + i * 0.5 → 2 + i * 0.3
+                            duration: 2 + i * 0.3,
                             repeat: Infinity,
-                            delay: i * 0.1, // Faster: i * 0.2 → i * 0.1
+                            delay: i * 0.1,
                             ease: "easeInOut"
                         }}
                     />
@@ -137,16 +149,16 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         );
     };
 
-    // Category-specific background patterns - moved to corners
+    // Category-specific background patterns
     const CategoryBackground = () => {
         switch (project.category) {
             case 'fullstack':
                 return (
                     <div className="absolute inset-0 opacity-10">
-                        <div className="absolute top-2 left-2 text-blue-400/30 text-xs font-mono">{'</>'}</div>
-                        <div className="absolute top-2 right-2 text-purple-400/30 text-xs font-mono">{'{ }'}</div>
-                        <div className="absolute bottom-2 left-2 text-green-400/30 text-xs font-mono">{'API'}</div>
-                        <div className="absolute bottom-2 right-2 text-cyan-400/30 text-xs font-mono">{'DB'}</div>
+                        <div className="absolute top-2 left-2 text-blue-400/30 text-xs font-mono">&lt;/&gt;</div>
+                        <div className="absolute top-2 right-2 text-purple-400/30 text-xs font-mono">&#123; &#125;</div>
+                        <div className="absolute bottom-2 left-2 text-green-400/30 text-xs font-mono">API</div>
+                        <div className="absolute bottom-2 right-2 text-cyan-400/30 text-xs font-mono">DB</div>
                     </div>
                 );
             
@@ -156,7 +168,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                         <div className="absolute top-3 left-3 w-4 h-1 bg-green-400/40 rounded"></div>
                         <div className="absolute top-3 right-3 w-3 h-3 bg-emerald-400/40 rounded-full"></div>
                         <div className="absolute bottom-3 left-3 w-5 h-1 bg-teal-400/40 rounded"></div>
-                        <div className="absolute bottom-3 right-3 text-green-400/30 text-xs font-mono">{'UI'}</div>
+                        <div className="absolute bottom-3 right-3 text-green-400/30 text-xs font-mono">UI</div>
                     </div>
                 );
                 
@@ -166,7 +178,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                         <div className="absolute top-3 left-3 w-2 h-4 bg-purple-400/40 rounded"></div>
                         <div className="absolute top-3 right-3 w-2 h-4 bg-violet-400/40 rounded"></div>
                         <div className="absolute bottom-3 left-3 w-3 h-3 bg-indigo-400/40 rounded-full"></div>
-                        <div className="absolute bottom-3 right-3 text-purple-400/30 text-xs font-mono">{'DB'}</div>
+                        <div className="absolute bottom-3 right-3 text-purple-400/30 text-xs font-mono">DB</div>
                     </div>
                 );
                 
@@ -189,9 +201,11 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     const getProjectIcon = () => {
         if (project.iconImage) {
             return (
-                <img 
+                <Image 
                     src={project.iconImage} 
                     alt={`${project.title} icon`}
+                    width={64}
+                    height={64}
                     className="w-16 h-16 object-contain opacity-60"
                 />
             );
@@ -222,9 +236,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     return (
         <motion.div
             className="relative"
-            initial={{ opacity: 0, y: 30 }} // Reduced movement: 50 → 30
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }} // Faster: 0.6, delay: index * 0.1 → 0.4, delay: index * 0.05
+            transition={{ duration: 0.4, delay: index * 0.05 }}
             viewport={{ once: true }}
         >
             <motion.div
@@ -234,8 +248,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 }}
                 transition={{
                     type: "spring",
-                    stiffness: 400, // Faster: 300 → 400
-                    damping: 25 // Faster: 30 → 25
+                    stiffness: 400,
+                    damping: 25
                 }}
                 onClick={() => setIsExpanded(!isExpanded)}
                 whileHover={{ scale: 1.02 }}
@@ -263,18 +277,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                 </div>
                             )}
                             
-                            {/* Expand/Collapse indicator */}
                             <motion.div
                                 className="text-white/50 text-sm"
                                 animate={{ rotate: isExpanded ? 90 : 0 }}
-                                transition={{ duration: 0.2 }} // Faster: 0.3 → 0.2
+                                transition={{ duration: 0.2 }}
                             >
                                 <FaArrowRight />
                             </motion.div>
                         </div>
                     </div>
 
-                    {/* Video/Preview Area - Always visible */}
+                    {/* Video/Preview Area */}
                     <div className="flex items-center justify-center mb-4 h-40">
                         <AnimatePresence mode="wait">
                             {showVideo && project.video ? (
@@ -283,7 +296,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.2 }} // Faster: 0.3 → 0.2
+                                    transition={{ duration: 0.2 }}
                                     className="relative w-full h-40 rounded-lg overflow-hidden"
                                 >
                                     <video
@@ -295,9 +308,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                         <source src={project.video} type="video/mp4" />
                                     </video>
                                     
-                                    {/* Video controls overlay */}
                                     <div className="absolute top-2 right-2 flex gap-2">
-                                        {/* Stop/Back to icon button */}
                                         <motion.button
                                             onClick={handleStopVideo}
                                             className="bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-all duration-200 backdrop-blur-sm border border-white/20"
@@ -309,7 +320,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                         </motion.button>
                                     </div>
 
-                                    {/* Optional: Video info overlay */}
                                     <div className="absolute bottom-2 left-2 bg-black/60 text-white px-2 py-1 rounded text-xs backdrop-blur-sm">
                                         {project.projectName || project.title}
                                     </div>
@@ -320,7 +330,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.2 }} // Faster: 0.3 → 0.2
+                                    transition={{ duration: 0.2 }}
                                     className="relative w-full h-40 rounded-lg bg-black/30 flex items-center justify-center group border border-white/10"
                                 >
                                     <div className="text-center">
@@ -330,7 +340,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                         </div>
                                     </div>
                                     
-                                    {/* Play button overlay */}
                                     <motion.button
                                         onClick={handlePlayVideo}
                                         className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 rounded-lg"
@@ -363,7 +372,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                         </AnimatePresence>
                     </div>
 
-                    {/* Title - Always visible */}
+                    {/* Title */}
                     <h3 className={`text-lg font-bold text-white mb-3 ${theme.accentColor} text-center line-clamp-2`}>
                         {project.title}
                     </h3>
@@ -377,16 +386,15 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                 exit={{ opacity: 0, height: 0 }}
                                 transition={{
                                     type: "spring",
-                                    stiffness: 400, // Faster: 300 → 400
-                                    damping: 25 // Faster: 30 → 25
+                                    stiffness: 400,
+                                    damping: 25
                                 }}
                                 className="overflow-hidden"
                             >
-                                {/* Description */}
                                 <motion.div
-                                    initial={{ y: 15, opacity: 0 }} // Reduced movement: 20 → 15
+                                    initial={{ y: 15, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: 0.05 }} // Faster: 0.1 → 0.05
+                                    transition={{ delay: 0.05 }}
                                     className="mb-4"
                                 >
                                     <p className="text-white/80 text-sm leading-relaxed">
@@ -394,18 +402,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                     </p>
                                 </motion.div>
 
-                                {/* Tech stack */}
                                 <motion.div
-                                    initial={{ y: 15, opacity: 0 }} // Reduced movement: 20 → 15
+                                    initial={{ y: 15, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: 0.1 }} // Faster: 0.2 → 0.1
+                                    transition={{ delay: 0.1 }}
                                     className="mb-4"
                                 >
                                     <div className="flex flex-wrap gap-2">
                                         {project.techStack.slice(0, 8).map((tech, i) => (
                                             <span
                                                 key={i}
-                                                className={`px-2 py-1 text-xs rounded-lg border transition-all duration-150 bg-white/10 text-white/80 border-white/20 hover:bg-white/20 ${theme.glow}`} // Faster: duration-300 → duration-150
+                                                className={`px-2 py-1 text-xs rounded-lg border transition-all duration-150 bg-white/10 text-white/80 border-white/20 hover:bg-white/20 ${theme.glow}`}
                                             >
                                                 {tech}
                                             </span>
@@ -418,11 +425,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                     </div>
                                 </motion.div>
 
-                                {/* Action buttons */}
                                 <motion.div
-                                    initial={{ y: 15, opacity: 0 }} // Reduced movement: 20 → 15
+                                    initial={{ y: 15, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: 0.15 }} // Faster: 0.3 → 0.15
+                                    transition={{ delay: 0.15 }}
                                     className="flex items-center gap-3"
                                 >
                                     {project.githubUrl && (
@@ -430,7 +436,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                             href={project.githubUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-150 bg-white/10 text-white/80 hover:bg-white/20 flex-1 justify-center" // Faster: duration-300 → duration-150
+                                            className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-150 bg-white/10 text-white/80 hover:bg-white/20 flex-1 justify-center"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={(e) => e.stopPropagation()}
@@ -445,7 +451,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                             href={project.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-150 bg-gradient-to-r ${theme.badge} text-white shadow-lg flex-1 justify-center`} // Faster: duration-300 → duration-150
+                                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-150 bg-gradient-to-r ${theme.badge} text-white shadow-lg flex-1 justify-center`}
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={(e) => e.stopPropagation()}
@@ -456,11 +462,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                     )}
                                 </motion.div>
 
-                                {/* Collapse hint */}
                                 <motion.div
-                                    initial={{ y: 15, opacity: 0 }} // Reduced movement: 20 → 15
+                                    initial={{ y: 15, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: 0.2 }} // Faster: 0.4 → 0.2
+                                    transition={{ delay: 0.2 }}
                                     className="text-center mt-4"
                                 >
                                     <div className="text-white/50 text-xs flex items-center justify-center gap-1">
@@ -472,7 +477,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                         )}
                     </AnimatePresence>
 
-                    {/* Expand hint - only when collapsed */}
                     {!isExpanded && (
                         <div className="text-center">
                             <div className="text-white/50 text-xs flex items-center justify-center gap-1">
