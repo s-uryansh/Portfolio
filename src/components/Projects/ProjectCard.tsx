@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaCode, FaServer, FaLaptopCode, FaShieldAlt, FaPlay, FaArrowRight, FaArrowLeft, FaTimes, FaStop } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaCode, FaServer, FaLaptopCode, FaShieldAlt, FaPlay, FaArrowRight, FaArrowLeft, FaTimes } from 'react-icons/fa';
 
 interface Project {
     id: number;

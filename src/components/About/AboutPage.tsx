@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useMouseParallax } from '@/hooks/useMouseParallax';
-import { FaDownload, FaUser, FaCode, FaGraduationCap, FaBriefcase } from 'react-icons/fa';
+import { FaUser, FaCode, FaGraduationCap, FaBriefcase } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
 import AboutImages from './AboutImages';
 import ExpJourneyCert, { type TimelineItemData } from './expJourneyCert';

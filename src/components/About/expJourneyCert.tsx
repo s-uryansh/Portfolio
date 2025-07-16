@@ -50,8 +50,6 @@ function TimelineItem({ item, index, totalItems, isVisible }: TimelineItemProps)
     // Transform values based on scroll progress
     const lineHeight = useTransform(scrollYProgress, [0, 0.5, 1], ["0%", "100%", "100%"]);
     const dotScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0.8]);
-    const contentOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-    const contentY = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [30, 0, 0, 30]);
     
     // Dynamic colors based on type
     const getTypeColor = (type: string) => {
