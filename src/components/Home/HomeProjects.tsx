@@ -16,7 +16,6 @@ const featuredProjects = [
         projectName: 'GladMeds',
         iconImage: '/icons/icon.png',
         githubUrl: 'https://github.com/s-uryansh/GladMeds',
-        liveUrl: 'https://example.com',
         featured: true,
         video: '/videos/(Ready)GladMeds.mp4'
     },

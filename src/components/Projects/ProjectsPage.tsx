@@ -13,7 +13,6 @@ const projects = [
         techStack: ['Next.js', 'React', 'MySQL', 'Google SSO'],
         category: 'fullstack' as const,
         githubUrl: 'https://github.com/s-uryansh/GladMeds',
-        liveUrl: 'https://example.com',
         featured: true,
         icon:'icons/logo.svg',
         iconImage:'/icons/icon.png',
