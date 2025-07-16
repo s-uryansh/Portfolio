@@ -116,8 +116,9 @@ const timelineData: TimelineItemData[] = [
         company: 'OUR in Shiv Nadar University',
         date: 'March 2025 - Current',
         description: 'Contributed to a research project on MorphDAG under the guidance of Prof. Sweta Kumar, focusing on enhancing DAG-based blockchain performance. Implemented hot account detection and refined classification logic, achieving a 17.48% reduction in latency under concurrent workloads.',
-        skills: ['Go Concurrency', 'Blockchain', 'DAG', 'Performance Optimization']
-    }
+        skills: ['Go Concurrency', 'Blockchain', 'DAG', 'Performance Optimization'],
+        paper: '/assets/ResearchPaper/paper.pdf'
+    }   
 ];
 
 export default function AboutPage() {
