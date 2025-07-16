@@ -54,7 +54,7 @@ export default function HomeAbout() {
                                 </p>
                                 
                                 <p className="text-responsive-base leading-relaxed">
-                                    I'm Suryansh Rohil, an enthusiastic full-stack developer who can create scalable web apps and has a keen interest in cybersecurity.
+                                    I&apos;m Suryansh Rohil, an enthusiastic full-stack developer who can create scalable web apps and has a keen interest in cybersecurity.
                                 </p>
 
                                 <p className="text-responsive-base leading-relaxed">
