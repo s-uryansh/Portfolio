@@ -17,7 +17,8 @@ const projects = [
         icon:'icons/logo.svg',
         iconImage:'/icons/icon.png',
         projectName: 'GladMeds',
-        video: '/videos/(Ready)GladMeds.mp4'
+        video: '/videos/(Ready)GladMeds.mp4',
+        liveUrl: 'https://gladmeds.vercel.app/'
     },
     {
         id: 2,
@@ -56,11 +57,12 @@ const projects = [
         techStack: ['Next.js', 'React', 'Mongo'],
         category: 'fullstack' as const,
         githubUrl: 'https://github.com/s-uryansh/PortayourPCB',
-        featured: true,
+        // featured: true,
         // icon:'icons/logo.svg',
         iconImage:'/icons/Logo.png',
         projectName: 'PortrayourPCB',
-        video: '/videos/(Ready) PortayourPCB.mp4'
+        video: '/videos/(Ready) PortayourPCB.mp4',
+        liveUrl:'https://portayourpcb.vercel.app/'
     },
 ];
 
