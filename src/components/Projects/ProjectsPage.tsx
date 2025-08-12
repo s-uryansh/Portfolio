@@ -10,7 +10,7 @@ const projects = [
         id: 1,
         title: 'AI-Powered Medical Assistant Platform',
         description: 'Developed a full-stack AI-powered health platform offering personalized support through features like medicine safety scanning via barcode/QR, emergency videos, hospital locator, and medical data export.',
-        techStack: ['Next.js', 'React', 'MySQL', 'Google SSO'],
+        techStack: ['Next.js', 'React', 'Mongo', 'Google SSO'],
         category: 'fullstack' as const,
         githubUrl: 'https://github.com/s-uryansh/GladMeds',
         featured: true,
@@ -48,7 +48,20 @@ const projects = [
         category: 'backend' as const,
         projectName: 'ToDo List',
         githubUrl: 'https://github.com/s-uryansh/ToDo'
-    }
+    },
+    {
+        id: 5,
+        title: 'PortrayourPCB',
+        description: 'Developed a full-stack scalable website for a startup.',
+        techStack: ['Next.js', 'React', 'Mongo'],
+        category: 'fullstack' as const,
+        githubUrl: 'https://github.com/s-uryansh/PortayourPCB',
+        featured: true,
+        // icon:'icons/logo.svg',
+        iconImage:'/icons/Logo.png',
+        projectName: 'PortrayourPCB',
+        video: '/videos/(Ready) PortayourPCB.mp4'
+    },
 ];
 
 export default function ProjectsPage() {
