@@ -49,7 +49,7 @@ const timelineData: TimelineItemData[] = [
         description: 'Developed a full-stack AI-powered health platform offering personalized support through features like medicine safety scanning via barcode/QR, emergency SOS with real-time location, hospital locator, and medical data export. Integrated user profiles, medical history, and Google SSO with a dynamic onboarding and dashboard experience.',
         skills: ['Next.js', 'React', 'MySQL', 'Google SSO'],
         githubUrl: 'https://github.com/s-uryansh/GladMeds',
-        liveUrl: 'url',
+        liveUrl: 'https://gladmeds.vercel.app/',
         isFullStack: true
     },
     {
@@ -117,8 +117,21 @@ const timelineData: TimelineItemData[] = [
         date: 'March 2025 - Current',
         description: 'Contributed to a research project on MorphDAG under the guidance of Prof. Sweta Kumar, focusing on enhancing DAG-based blockchain performance. Implemented hot account detection and refined classification logic, achieving a 17.48% reduction in latency under concurrent workloads.',
         skills: ['Go Concurrency', 'Blockchain', 'DAG', 'Performance Optimization'],
+        githubUrl: 'https://github.com/s-uryansh/OPT-MorphDAG',
         paper: '/assets/ResearchPaper/paper.pdf'
-    }   
+    },
+   {
+        id: 12,
+        type: 'project',
+        title: 'PortrayourPCB',
+        company: 'Startup Project',
+        date: '2025',
+        description: 'Developed a full-stack scalable website for a startup.',
+        skills: ['Next.js', 'React', 'MySQL', 'Google SSO'],
+        githubUrl: 'https://github.com/s-uryansh/PortayourPCB',
+        liveUrl:'https://portayourpcb.vercel.app/',
+        isFullStack: true
+    },
 ];
 
 export default function AboutPage() {
