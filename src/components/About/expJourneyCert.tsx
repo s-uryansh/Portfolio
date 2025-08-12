@@ -250,7 +250,7 @@ function TimelineItem({ item, index, totalItems, isVisible }: TimelineItemProps)
                     )}
                     
                     {/* Project Links */}
-                    {item.type === 'project' && (item.githubUrl || item.liveUrl) && (
+                    {(item.githubUrl || item.liveUrl) && (
                         <motion.div 
                             className={`flex items-center gap-2 ${index % 2 === 0 ? 'sm:justify-end' : 'sm:justify-start'} justify-start`}
                             initial={{ opacity: 0, y: 10 }}
