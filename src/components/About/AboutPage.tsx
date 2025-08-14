@@ -47,7 +47,7 @@ const timelineData: TimelineItemData[] = [
         company: 'Personal Project',
         date: '2025',
         description: 'Developed a full-stack AI-powered health platform offering personalized support through features like medicine safety scanning via barcode/QR, emergency SOS with real-time location, hospital locator, and medical data export. Integrated user profiles, medical history, and Google SSO with a dynamic onboarding and dashboard experience.',
-        skills: ['Next.js', 'React', 'MySQL', 'Google SSO'],
+        skills: ['Next.js', 'React', 'MongoDB', 'Google SSO'],
         githubUrl: 'https://github.com/s-uryansh/GladMeds',
         liveUrl: 'https://gladmeds.vercel.app/',
         isFullStack: true
@@ -127,7 +127,7 @@ const timelineData: TimelineItemData[] = [
         company: 'Startup Project',
         date: '2025',
         description: 'Developed a full-stack scalable website for a startup.',
-        skills: ['Next.js', 'React', 'MySQL', 'Google SSO'],
+        skills: ['Next.js', 'React', 'MongoDB', 'Google SSO'],
         githubUrl: 'https://github.com/s-uryansh/PortayourPCB',
         liveUrl:'https://portayourpcb.vercel.app/',
         isFullStack: true
