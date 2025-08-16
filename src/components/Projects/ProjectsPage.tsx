@@ -163,7 +163,8 @@ export default function ProjectsPage() {
                                 Featured Projects
                             </h2>
                             <p className="text-white/70 text-responsive-base max-w-2xl mx-auto">
-                                Full-stack applications, AI integrations, and more.
+                                Full-stack applications, AI integrations, and more.<br></br>
+                                <i><small>(some projects are not shown as they are of a private organization)</small></i>
                             </p>
                         </motion.div>
                         
