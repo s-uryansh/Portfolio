@@ -20,7 +20,7 @@ const timelineData: TimelineItemData[] = [
         company: 'Blockchain Project',
         date: '2025',
         description: 'The primary goal for this project is to build a decentralized platform for alumni student resource sharing and mentorship using consensus, persistence, and liveness the three fundamental blockchain properties to ensure reliable resource exchange, genuine alumni verification, and transparent rewards.',
-        skills: ['Flutter', 'Dart'],
+        skills: ['Next.js', 'Solidity', 'Go', 'Python' ],
         githubUrl: 'https://github.com/s-uryansh/GradLedger'
     },
     {
