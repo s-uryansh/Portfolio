@@ -1,89 +1,57 @@
 'use client';
-
-import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import AboutImages from '../About/AboutImages';
 
 export default function HomeAbout() {
     return (
-        <section className="relative py-responsive">
-            <div className="container-responsive max-2xl">
-                <motion.div
+        <section className="min-h-screen bg-white text-black py-24 px-6 flex items-center">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                <motion.div 
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col justify-between"
+                >
+                    <h2 className="text-[10vw] md:text-[8vw] leading-[0.9] font-black uppercase tracking-tighter">
+                        The <br /> Build.
+                    </h2>
+                    <div className="mt-12 flex flex-col gap-6 items-start">
+                        <Link href="/about" className="group flex items-center gap-4 text-2xl font-bold uppercase tracking-widest">
+                            Biography 
+                            <span className="group-hover:translate-x-3 transition-transform duration-300">→</span>
+                        </Link>
+                        <motion.a
+                            href="/assets/Resume/resume.pdf"
+                            download
+                            className="text-sm font-mono uppercase tracking-widest border-b border-black pb-1 hover:text-[#ff3366] hover:border-[#ff3366] transition-colors"
+                        >
+                            Download CV
+                        </motion.a>
+                    </div>
+                </motion.div>
+
+                <motion.div 
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="glass-box p-8 md:p-12 rounded-3xl"
+                    className="text-2xl md:text-4xl font-medium leading-tight tracking-tight flex flex-col justify-center"
                 >
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        {/* Left Side - AboutImages Component */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 1, delay: 0.2 }}
-                            viewport={{ once: true }}
-                            className="flex justify-center"
-                        >
-                            <AboutImages />
-                        </motion.div>
-
-                        {/* Right Side - About Info */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 1, delay: 0.4 }}
-                            viewport={{ once: true }}
-                            className="space-y-6"
-                        >
-                            <h2 className="text-responsive-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                                About Me
-                            </h2>
-                            
-                            <motion.div
-                                className="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-400"
-                                initial={{ width: 0 }}
-                                whileInView={{ width: '4rem' }}
-                                transition={{ duration: 1, delay: 0.6 }}
-                                viewport={{ once: true }}
-                            />
-                            
-                            <div className="space-y-4 text-white/80">
-                                <p className="text-responsive-lg font-semibold">
-                                    Passionate Full-Stack Developer & Cybersecurity Enthusiast
-                                </p>
-                                
-                                <p className="text-responsive-base leading-relaxed">
-                                    I&apos;m Suryansh Rohil, an enthusiastic full-stack developer who can create scalable web apps and has a keen interest in cybersecurity.
-                                </p>
-
-                                <p className="text-responsive-base leading-relaxed">
-                                    With practical experience and increasing skills in cloud platforms, React, and Next.js, I build creative solutions that strike a balance between functionality and user experience.
-                                </p>
-                                
-                                <div className="pt-4">
-                                    <motion.a
-                                        href="/assets/Resume/resume.pdf"
-                                        download
-                                        className="glass-box px-6 py-2 rounded-full border border-white/30 hover:border-white/50 transition-all duration-300 inline-block"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                    >
-                                        <span className="text-white text-sm">Download CV</span>
-                                    </motion.a>
-                                </div>
-                            </div>
-                            
-                            <Link href="/about">
-                                <motion.button
-                                    className="glass-box px-8 py-3 rounded-full border border-blue-400/50 hover:border-blue-400 transition-all duration-300 bg-gradient-to-r from-blue-400/10 to-purple-400/10"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    <span className="text-blue-300 font-medium">Learn More About Me</span>
-                                </motion.button>
-                            </Link>
-                        </motion.div>
+                    <p className="mb-8">
+                        I build <span className="italic font-serif">robust</span> digital infrastructures and secure full-stack applications.
+                    </p>
+                    <p className="text-black/40">
+                        I am Suryansh Rohil, a developer focused on Blockchain, Security Analysis, and creating creative solutions that strike a balance between functionality and user experience.
+                    </p>
+                    <div className="mt-12 pt-12 border-t border-black/10 grid grid-cols-2 gap-8 text-sm font-mono uppercase tracking-widest text-black/60">
+                        <div>
+                            <p className="text-black mb-2">Focus</p>
+                            <p>Software Dev</p>
+                            <p>Cybersecurity</p>
+                        </div>
+                        <div>
+                            <p className="text-black mb-2">Location</p>
+                            <p>Noida, India</p>
+                        </div>
                     </div>
                 </motion.div>
             </div>

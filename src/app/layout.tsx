@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css"
 import { Toaster } from "react-hot-toast";
 import Topbar from "@/components/skeleton/Topbar";
+import SmoothScroll from "@/components/Global/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: "s-uryansh" }],
   creator: "s-uryansh",
   publisher: "s-uryansh",
-  metadataBase: new URL("https://your-domain.com"), // Add this to fix the metadataBase warning
+  metadataBase: new URL("https://s-uryansh.vercel.app"), 
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -122,6 +123,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden safe-area-inset`}
       >
+        <SmoothScroll>
         <Topbar />
         <main className="relative min-h-screen">{children}</main>
         <Toaster
@@ -136,6 +138,7 @@ export default function RootLayout({
             },
           }}
         />
+        </SmoothScroll>
       </body>
     </html>
   );

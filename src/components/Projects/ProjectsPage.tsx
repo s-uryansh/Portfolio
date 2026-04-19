@@ -1,203 +1,134 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ProjectsGrid from './ProjectsGrid';
-import { useMouseParallax } from '@/hooks/useMouseParallax';
 
 const projects = [
     {
-        id: 7,
-        title: 'GradLedger',
-        description: 'The primary goal for this project is to build a decentralized platform for alumni student resource sharing and mentorship using consensus, persistence, and liveness the three fundamental blockchain properties to ensure reliable resource exchange, genuine alumni verification, and transparent rewards.',
-        techStack: ['Next.js', 'Go', 'Python', 'Solidity'],
-        category: 'cybersecurity' as const,
-        githubUrl: 'https://github.com/s-uryansh/GradLedger',
+        id: 9,
+        title: 'GradPQC: Quantum Intelligence',
+        description: 'Enterprise cryptographic governance platform built for the PNB PSB Hackathon 2026. Engineered a highly concurrent Go backend and Next.js dashboard that uses Monte Carlo simulations and ML clustering to predict exact quantum-breach probabilities.',
+        techStack: ['Go', 'Next.js', 'Machine Learning', 'MySQL'],
+        category: 'cybersecurity',
+        githubUrl: 'https://github.com/s-uryansh/GradPQC',
         featured: true,
-        // icon:'icons/logo.svg',
-        iconImage:'/icons/GradLedger.png',
-        projectName: 'GradLedger',
-        video: '/videos/GradLedger.mp4',
-        // liveUrl: 'https://gradledger.vercel.app/'
+        projectName: 'GradPQC',
+    },
+    {
+        id: 8,
+        title: 'GradGuard: Adaptive Honeypot',
+        description: 'An advanced SSH Honeypot engine using Machine Learning and eBPF kernel monitoring in Go. Dynamically mutates fake Docker environments to deceive attacker fingerprinting and includes an egress sinkhole.',
+        techStack: ['Go', 'eBPF', 'Machine Learning', 'Docker'],
+        category: 'cybersecurity',
+        githubUrl: 'https://github.com/s-uryansh/GradGuard',
+        featured: true,
+        projectName: 'GradGuard',
+    },
+    {
+        id: 6,
+        title: 'MorphDAG',
+        description: 'Orchestrated a highly concurrent execution engine for a DAG-based blockchain in Go, utilizing a hot account detection algorithm to mitigate state conflicts across parallel nodes.',
+        techStack: ['Go'],
+        category: 'cybersecurity',
+        paper: 'https://ieeexplore.ieee.org/document/11310865',
+        featured: true,
+        projectName: 'MorphDAG',
     },
     {
         id: 1,
-        title: 'AI-Powered Medical Assistant Platform',
-        description: 'Developed a full-stack AI-powered health platform offering personalized support through features like medicine safety scanning via barcode/QR, emergency videos, hospital locator, and medical data export.',
+        title: 'GradLedger',
+        description: 'Decentralized platform for alumni student resource sharing and mentorship using consensus, persistence, and liveness properties.',
+        techStack: ['Next.js', 'Go', 'Python', 'Solidity'],
+        category: 'cybersecurity',
+        githubUrl: 'https://github.com/s-uryansh/GradLedger',
+        featured: true,
+        projectName: 'GradLedger',
+        video: '/videos/GradLedger.mp4',
+    },
+    {
+        id: 2,
+        title: 'AI-Powered Medical Assistant',
+        description: 'Engineered a secure, full-stack medical assistant platform in Next.js, implementing a centralized Data Access Layer (DAL) to strictly govern the retrieval of sensitive health profiles and chronic conditions.',
         techStack: ['Next.js', 'React', 'Mongo', 'Google SSO'],
-        category: 'fullstack' as const,
+        category: 'fullstack',
         githubUrl: 'https://github.com/s-uryansh/GladMeds',
         featured: true,
-        icon:'icons/logo.svg',
-        iconImage:'/icons/icon.png',
         projectName: 'GladMeds',
         video: '/videos/(Ready)GladMeds.mp4',
         liveUrl: 'https://gladmeds.vercel.app/'
     },
     {
-        id: 2,
+        id: 3,
         title: 'E-commerce Platform',
-        description: 'During my internship, I created a frontend with dynamic product listings for a client e-commerce platform.',
+        description: 'Frontend with dynamic product listings developed for a client e-commerce platform during internship.',
         techStack: ['Next.js', 'React', 'Tailwind CSS'],
-        iconImage:'/icons/apnaMaaliLogo.png',
         projectName: 'Apna Maali',
-        category: 'frontend' as const,
+        category: 'frontend',
         video: '/videos/(Ready)ApnaMaali.mp4'
     },
     {
-        id: 3,
-        title: 'Smart City Transport System',
-        description: 'Developed a transport management system with interactive frontends and RESTful APIs for effective route and schedule management.',
-        techStack: ['Go', 'Gin', 'MySQL', 'React', 'REST APIs'],
-        category: 'fullstack' as const,
-        iconImage:'/icons/sctsLogo.png',
-        projectName: 'Smart City Transport',
-        githubUrl: 'https://github.com/s-uryansh/Smart-City-Transport'
-    },
-    {
         id: 4,
-        title: 'ToDo List Backend',
-        description: 'Built a robust ToDo backend logic with Go and Gin framework, featuring user authentication and persistent data storage.',
-        techStack: ['Go', 'Gin', 'MySQL', 'MongoDB', 'JWT'],
-        iconImage:'/icons/ToDoLOGO.png',
-        category: 'backend' as const,
-        projectName: 'ToDo List',
-        githubUrl: 'https://github.com/s-uryansh/ToDo'
-    },
-    {
-        id: 5,
         title: 'PortrayourPCB',
-        description: 'Developed a full-stack scalable website for a startup.',
+        description: 'Full-stack scalable website developed for a startup.',
         techStack: ['Next.js', 'React', 'Mongo'],
-        category: 'fullstack' as const,
+        category: 'fullstack',
         githubUrl: 'https://github.com/s-uryansh/PortayourPCB',
-        // featured: true,
-        // icon:'icons/logo.svg',
-        iconImage:'/icons/Logo.png',
         projectName: 'PortrayourPCB',
         video: '/videos/(Ready) PortayourPCB.mp4',
         liveUrl:'https://portayourpcb.vercel.app/'
     },
     {
-        id: 6,
+        id: 5,
         title: 'Krishi AI Sahayak',
-        description: 'Built the Android app frontend using Flutter and Dart.',
+        description: 'Smart SNU Hackathon’25 Winner (1st place): Delivered a high-performance agricultural application, reducing memory overhead and accelerating rendering pipelines through efficient widget state management.',
         techStack: ['Flutter', 'Dart'],
-        category: 'frontend' as const,
-        githubUrl: 'https://github.com/Eros483/SIH25-Farmers',
+        category: 'frontend',
+        githubUrl: 'https://github.com/Eros483/SIH25-Farmers/tree/main/Flutter',
         featured: true,
-        icon:'icons/krishi.png',
-        iconImage:'/icons/krishi.png',
         projectName: 'Krishi AI Sahayak',
     },
 ];
 
 export default function ProjectsPage() {
-    const starsRef = useMouseParallax(0.01);
+    const [filter, setFilter] = useState('ALL');
+    const categories = ['ALL', 'CYBERSECURITY', 'FULLSTACK', 'FRONTEND', 'BACKEND'];
+
+    const filteredProjects = filter === 'ALL' 
+        ? projects 
+        : projects.filter(p => p.category.toUpperCase() === filter);
 
     return (
-        <div className="min-h-screen bg-animate-gradient relative overflow-hidden">
-            {/* Background layers */}
-            <div 
-                className="fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900/50 to-slate-900 pointer-events-none"
-                aria-hidden="true"
-            />
-            
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="relative z-10"
-            >
-                <div ref={starsRef} className="stars-layer" aria-hidden="true" />
-                
-                {/* Hero Section */}
-                <section className="relative min-h-screen flex items-center justify-center px-responsive">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        className="relative z-10"
+        <div className="min-h-screen bg-black text-white selection:bg-[#ff3366]">
+            <section className="pt-40 pb-10 px-6">
+                <div className="max-w-7xl mx-auto">
+                    <motion.h1 
+                        initial={{ y: 60, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-[12vw] font-black uppercase leading-[0.8] tracking-tighter mb-20"
                     >
-                        <div className="container-responsive max-2xl text-center">
-                            <motion.h1
-                                className="text-responsive-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 1, delay: 0.5 }}
-                            >
-                                Projects
-                            </motion.h1>
-                            
-                            <motion.div
-                                className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-6 sm:mb-8"
-                                initial={{ width: 0 }}
-                                animate={{ width: '6rem' }}
-                                transition={{ duration: 1, delay: 1 }}
-                            />
-                            
-                            <motion.p
-                                className="text-responsive-lg text-white/80 max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-12"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1, delay: 1.2 }}
-                            >
-                                Explore my{' '}
-                                <span className="text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text font-semibold">
-                                    projects
-                                </span>{' '}
-                                and see what I&apos;ve been building
-                            </motion.p>
-                        </div>
-                    </motion.div>
-                     
-                            {/* Scroll indicator */}
-                            <motion.div
-                                className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1, delay: 2 }}
-                            >
-                                <div className="flex flex-col items-center">
-                                    <motion.div
-                                        className="w-5 sm:w-6 h-8 sm:h-10 border-2 border-white/30 rounded-full flex justify-center"
-                                        animate={{ y: [0, 5, 0] }}
-                                        transition={{ duration: 2, repeat: Infinity }}
-                                    >
-                                        <motion.div
-                                            className="w-1 h-2 sm:h-3 bg-white/50 rounded-full mt-2"
-                                            animate={{ opacity: [0.5, 1, 0.5] }}
-                                            transition={{ duration: 2, repeat: Infinity }}
-                                        />
-                                    </motion.div>
-                                </div>
-                            </motion.div>
-                </section>
+                        Selected<br/>
+                        <span className="text-white/10">Works.</span>
+                    </motion.h1>
 
-                {/* Projects Section */}
-                <section className="relative py-responsive">
-                    <div className="container-responsive max-2xl">
-                        <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            viewport={{ once: true }}
-                            className="mb-8 sm:mb-12 text-center"
-                        >
-                            
-                            <h2 className="text-responsive-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-                                Featured Projects
-                            </h2>
-                            <p className="text-white/70 text-responsive-base max-w-2xl mx-auto">
-                                Full-stack applications, AI integrations, and more.<br></br>
-                                <i><small>(some projects are not shown as they are of a private organization)</small></i>
-                            </p>
-                        </motion.div>
-                        
-                        <ProjectsGrid projects={projects} />
+                    {/* Functional Filter Bar */}
+                    <div className="flex flex-wrap gap-x-8 gap-y-4 mb-12 border-b border-white/10 pb-6">
+                        {categories.map(cat => (
+                            <button 
+                                key={cat}
+                                onClick={() => setFilter(cat)}
+                                className={`text-xs font-mono tracking-widest transition-colors ${
+                                    filter === cat ? 'text-[#ff3366]' : 'text-white/40 hover:text-white'
+                                }`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
                     </div>
-                </section>
-            </motion.div>
+                </div>
+            </section>
+            <ProjectsGrid projects={filteredProjects} />
         </div>
     );
 }

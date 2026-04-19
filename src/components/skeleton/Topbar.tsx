@@ -1,44 +1,35 @@
 'use client';
-
-import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
-
-const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Contact', href: '/contact' },
-];
 
 export default function Topbar() {
-  const pathname = usePathname();
+    const pathname = usePathname();
+    const links = [
+        { name: 'INDEX', href: '/' },
+        { name: 'ABOUT', href: '/about' },
+        { name: 'WORKS', href: '/projects' },
+        { name: 'CONTACT', href: '/contact' }
+    ];
 
-  return (
-    <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-      <nav className="glass-box px-4 py-2 rounded-full backdrop-blur-lg bg-white/5 border border-white/15">
-        <div className="flex items-center gap-1">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={clsx(
-                  "relative px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-300 hover:text-white hover:bg-white/10",
-                  isActive ? "text-white" : "text-white/70"
-                )}
-              >
-                {isActive && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full" />
-                )}
-                {link.name}
-              </Link>
-            );
-          })}
-        </div>
-      </nav>
-    </header>
-  );
+    return (
+        <header className="fixed top-0 left-0 w-full z-[100] p-6 mix-blend-difference pointer-events-none">
+            <nav className="flex justify-between items-center max-w-7xl mx-auto pointer-events-auto">
+                <Link href="/" className="font-black text-xl tracking-tighter text-white">S-U.</Link>
+                <div className="flex gap-8">
+                    {links.map((link) => (
+                        <Link 
+                            key={link.href} 
+                            href={link.href}
+                            /* Fixed: Replaced #ff3366 active state with solid white to prevent cyan inversion on white backgrounds */
+                            className={`text-xs font-mono tracking-widest transition-all ${
+                                pathname === link.href ? 'text-white border-b border-white' : 'text-white/60 hover:text-white'
+                            }`}
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
+                </div>
+            </nav>
+        </header>
+    );
 }

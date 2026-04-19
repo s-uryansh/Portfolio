@@ -1,98 +1,47 @@
 'use client';
-
-import React from 'react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
-import ProjectCard from '../Projects/ProjectCard';
+import ProjectsGrid from '../Projects/ProjectsGrid';
 
-// Featured projects (IDs 1 and 2)
 const featuredProjects = [
     {
-        id: 1,
-        title: 'GradLedger',
-        description: 'The primary goal for this project is to build a decentralized platform for alumni student resource sharing and mentorship using consensus, persistence, and liveness the three fundamental blockchain properties to ensure reliable resource exchange, genuine alumni verification, and transparent rewards.',
-        techStack: ['Next.js', 'Solidity', 'Go', 'Python' ],
-        projectName: 'GradLedger',
-        category: 'fullstack' as const,
-        iconImage: '/icons/GradLedger.png',
-        featured: true,
-        video: '/videos/GradLedger.mp4'
+        id: 9,
+        title: 'GradPQC',
+        description: 'Enterprise cryptographic governance platform. Uses Go concurrency and Monte Carlo simulations to predict exact quantum-breach probabilities.',
+        techStack: ['Go', 'Next.js', 'Machine Learning', 'MySQL'],
+        category: 'cybersecurity',
+        githubUrl: 'https://github.com/s-uryansh/GradPQC',
+        projectName: 'GradPQC',
     },
     {
-        id: 2,
-        title: 'AI-Powered Medical Assistant Platform',
-        description: 'Developed a full-stack AI-powered health platform offering personalized support through features like medicine safety scanning via barcode/QR, emergency videos, hospital locator, and medical data export.',
-        techStack: ['Next.js', 'React', 'MySQL', 'Google SSO'],
-        category: 'fullstack' as const,
-        projectName: 'GladMeds',
-        iconImage: '/icons/icon.png',
-        githubUrl: 'https://github.com/s-uryansh/GladMeds',
-        video: '/videos/(Ready)GladMeds.mp4'
+        id: 8,
+        title: 'GradGuard: Adaptive Honeypot',
+        description: 'Advanced SSH Honeypot engine using Machine Learning and eBPF kernel monitoring in Go. Mutates environments to deceive attacker fingerprinting.',
+        techStack: ['Go', 'eBPF', 'Machine Learning', 'Docker'],
+        category: 'cybersecurity',
+        githubUrl: 'https://github.com/s-uryansh/GradGuard',
+        projectName: 'GradGuard',
     },
+    {
+        id: 6,
+        title: 'MorphDAG',
+        description: 'Highly concurrent execution engine for a DAG-based blockchain in Go, mitigating state conflicts across parallel nodes.',
+        techStack: ['Go'],
+        category: 'cybersecurity',
+        paper: 'https://ieeexplore.ieee.org/document/11310865',
+        projectName: 'MorphDAG',
+    }
 ];
 
 export default function HomeProjects() {
     return (
-        <section className="relative py-responsive">
-            <div className="container-responsive max-2xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="mb-12 text-center"
-                >
-                    <h2 className="text-responsive-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-                        Featured Projects
-                    </h2>
-                    <motion.div
-                        className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-6"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '6rem' }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    />
-                    <p className="text-white/70 text-responsive-base max-w-2xl mx-auto">
-                        Explore my latest projects showcasing full-stack development and cybersecurity expertise
-                    </p>
-                </motion.div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                    {featuredProjects.map((project, index) => (
-                        <motion.div
-                            key={project.id}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: index * 0.2 }}
-                            viewport={{ once: true }}
-                        >
-                            <ProjectCard 
-                                project={project} 
-                                index={index}
-                            />
-                        </motion.div>
-                    ))}
-                </div>
-                
-                {/* View More Button */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    viewport={{ once: true }}
-                    className="text-center"
-                >
-                    <Link href="/projects">
-                        <motion.button
-                            className="glass-box px-8 py-4 rounded-full border border-purple-400/50 hover:border-purple-400 transition-all duration-300 bg-gradient-to-r from-purple-400/10 to-pink-400/10"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <span className="text-purple-300 font-medium text-lg">View More Projects →</span>
-                        </motion.button>
-                    </Link>
-                </motion.div>
+        <section className="bg-black py-20 border-t border-white/10">
+            <div className="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end">
+                <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-white/30">Selected Works</h2>
+                <Link href="/projects" className="text-sm font-bold uppercase tracking-widest hover:text-[#ff3366] transition-colors">
+                    View All →
+                </Link>
             </div>
+            <ProjectsGrid projects={featuredProjects} />
         </section>
     );
 }
