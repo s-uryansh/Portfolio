@@ -1,149 +1,107 @@
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Base Reset & Theme [cite: 583, 615] */
+/* ────────────────────────────────────────────────────────────
+   Design Tokens
+   ──────────────────────────────────────────────────────────── */
 :root {
-  --background: #000000;
-  --foreground: #fafafa; /* Softer off-white [cite: 4] */
-  --accent: #ff3366;
-}
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --bg-base:      #080c12;   /* near-black, slight blue tint — deep kernel space */
+  --bg-surface:   #0e1420;   /* card backgrounds */
+  --bg-elevated:  #141c2e;   /* hover state surfaces */
+  --border:       rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.14);
+
+  --violet:       #7c5cfc;   /* cryptography / security depth */
+  --violet-dim:   rgba(124, 92, 252, 0.15);
+  --cyan:         #00d4ff;   /* systems / Go / precision */
+  --cyan-dim:     rgba(0, 212, 255, 0.12);
+  --amber:        #f97316;   /* achievements / highlights */
+  --green:        #10b981;   /* blockchain / crypto */
+
+  --text-primary:   #dde5f4;
+  --text-secondary: #7b8fb0;
+  --text-muted:     #3d4d66;
+
+  /* Font variables are injected by next/font in layout.tsx */
+  --mono: var(--font-jetbrains), 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* Global Styles [cite: 584, 586] */
+/* Expose tokens to Tailwind's arbitrary-value engine where helpful */
+@theme inline {
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+}
+
+/* ────────────────────────────────────────────────────────────
+   Typography
+   ──────────────────────────────────────────────────────────── */
+* {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+.font-space { font-family: var(--font-space), 'Space Grotesk', sans-serif; }
+.font-mono  { font-family: var(--mono); }
+
 body {
-  background-color: var(--background) !important;
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.02;
-    z-index: 9999;
-    pointer-events: none;
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-}
-/* Text Selection [cite: 686] */
+
 ::selection {
-  background: var(--accent);
+  background: var(--violet);
   color: white;
 }
 
-/* Smooth Scroll (Lenis) Support [cite: 580, 581, 582] */
-html.lenis, html.lenis body {
-  height: auto;
-  width: 100%;
+/* ────────────────────────────────────────────────────────────
+   Smooth Scroll (Lenis) Support
+   ──────────────────────────────────────────────────────────── */
+html.lenis, html.lenis body { height: auto; width: 100%; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Horizontal scroll containers feel native on touch */
+.scroll-touch { -webkit-overflow-scrolling: touch; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ────────────────────────────────────────────────────────────
+   Scrollbar
+   ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: #1d2738; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--violet); }
+
+/* ────────────────────────────────────────────────────────────
+   Motion
+   ──────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(60px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
+.anim-fade-up  { opacity: 0; animation: fadeUp  0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+.anim-fade-in  { opacity: 0; animation: fadeIn  0.6s ease forwards; }
+.anim-slide-up { opacity: 0; animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-/* Typography Utilities */
-.text-outline {
-    /* Increased stroke opacity for better visibility */
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.45); 
-    color: transparent;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.text-outline:hover {
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 1);
-    color: rgba(255, 255, 255, 0.05);
-}
-
-/* Component Styling Overrides [cite: 581] */
-/* This forces the brutalist black style across all older components */
-.bg-animate-gradient, .stars-layer, .glass-box {
-  background: transparent !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-}
-
-/* Responsive Container Utilities [cite: 587-592] */
-@layer utilities {
-  .container-responsive {
-    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
-    max-width: 100%;
-  }
-  
-  .container-responsive.max-2xl { @apply max-w-7xl; }
-
-  /* Text responsive utilities [cite: 593-600] */
-  .text-responsive-base { @apply text-base sm:text-lg; }
-  .text-responsive-lg { @apply text-lg sm:text-xl md:text-2xl; }
-  .text-responsive-3xl { @apply text-3xl sm:text-4xl md:text-5xl; }
-  .text-responsive-4xl { @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl; }
-
-  /* Spacing utilities [cite: 601-603] */
-  .py-responsive { @apply py-8 sm:py-12 md:py-16 lg:py-20; }
-  .px-responsive { @apply px-4 sm:px-6 md:px-8 lg:px-12; }
-
-  /* Interaction [cite: 604] */
-  .touch-responsive {
-    @apply min-h-[44px] min-w-[44px] touch-manipulation;
-  }
-}
-
-/* Brutalist Scrollbar [cite: 609-613] */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: #000;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 0px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
-}
-
-/* Animations [cite: 606, 675-679] */
-.animate-spin-fast {
-  animation: spin 0.3s linear infinite;
-}
-
-@keyframes fastFadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fast-fade-in {
-  animation: fastFadeIn 0.3s ease-out;
-}
-
-/* Line Clamping [cite: 609, 667-668] */
-.line-clamp-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up, .anim-fade-in, .anim-slide-up { animation: none; opacity: 1; }
 }
