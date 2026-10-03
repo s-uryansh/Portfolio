@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "@/app/globals.css";
 import { Toaster } from "react-hot-toast";
 import SmoothScroll from "@/components/Global/SmoothScroll";
@@ -18,12 +18,6 @@ const inter = Inter({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Suryansh Rohil",
@@ -87,7 +81,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased overflow-x-hidden`}
+        className={`${spaceGrotesk.variable} ${inter.variable} antialiased overflow-x-hidden`}
         style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}
       >
         <SmoothScroll>
