@@ -1,4 +1,4 @@
-export interface OpenSourceContribution {
+interface OpenSourceContribution {
   project: string;
   repo: string;
   contribution: string;

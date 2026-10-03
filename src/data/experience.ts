@@ -1,4 +1,4 @@
-export interface ExperienceEntry {
+interface ExperienceEntry {
   company: string;
   role: string;
   period: string;

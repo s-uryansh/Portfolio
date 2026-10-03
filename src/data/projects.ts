@@ -97,15 +97,6 @@ export const projects: Project[] = [
   },
 ];
 
-export const categories = [
-  'All',
-  'Security',
-  'Systems',
-  'Full Stack',
-  'Blockchain',
-  'Crypto',
-] as const;
-
 export const categoryColor: Record<ProjectCategory, string> = {
   Security: 'var(--violet)',
   Systems: 'var(--cyan)',

@@ -11,10 +11,8 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <motion.div
-      layout
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       className="group flex flex-col bg-[var(--bg-surface)] border rounded-2xl p-6 transition-all duration-300 hover:bg-[var(--bg-elevated)] hover:-translate-y-0.5"
       style={{
