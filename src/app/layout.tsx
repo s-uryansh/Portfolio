@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://s-uryansh.vercel.app",
-    title: "Suryansh Rohil — Portfolio",
+    title: "Suryansh Rohil Portfolio",
     description:
       "Software Engineer & Security Researcher. GradGuard, CipherFault, Vanguard Linux PoC.",
     siteName: "Suryansh Rohil",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Suryansh Rohil — Portfolio",
+    title: "Suryansh Rohil Portfolio",
     description:
       "Software Engineer & Security Researcher. GradGuard, CipherFault, Vanguard Linux PoC.",
     images: ["/logo.png"],

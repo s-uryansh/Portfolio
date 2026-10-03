@@ -3,7 +3,7 @@
 import { projects } from '@/data/projects';
 import ProjectCard from './ProjectCard';
 
-// Highlighted work first, rest follow — no filter, all scannable at a glance.
+// Highlighted work first, rest follow. No filter, all scannable at a glance.
 const ordered = [...projects].sort(
   (a, b) => Number(Boolean(b.highlight)) - Number(Boolean(a.highlight))
 );

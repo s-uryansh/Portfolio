@@ -1,4 +1,4 @@
-# Suryansh Rohil – Developer Portfolio
+# Suryansh Rohil : Developer Portfolio
 
 This is a personal portfolio website designed and developed by me to showcase selected projects, technical skills, and interests in full-stack development and cybersecurity. The portfolio emphasizes interactive design, dynamic content, and modern UI/UX principles.
 

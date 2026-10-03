@@ -1,7 +1,7 @@
 export type ProjectCategory =
   | 'Security'
   | 'Systems'
-  | 'Full-Stack'
+  | 'Full Stack'
   | 'Blockchain'
   | 'Crypto';
 
@@ -21,7 +21,7 @@ export const projects: Project[] = [
   {
     name: 'GradGuard',
     tagline:
-      'ML-powered adaptive SSH honeypot that mutates its environment in real time to defeat attacker fingerprinting.',
+      'ML powered adaptive SSH honeypot that mutates its environment in real time to defeat attacker fingerprinting.',
     category: 'Security',
     tags: ['Go', 'eBPF', 'Docker', 'ML', 'Linux'],
     github: 'https://github.com/s-uryansh/GradGuard',
@@ -30,7 +30,7 @@ export const projects: Project[] = [
   {
     name: 'CipherFault',
     tagline:
-      'Binary crypto-misuse evidence engine — recognizes classical and post-quantum primitives in stripped binaries via GNN.',
+      'Binary crypto misuse evidence engine. Recognizes classical and post quantum primitives in stripped binaries via GNN.',
     category: 'Security',
     tags: ['Python', 'Ghidra', 'PyTorch Geometric', 'GNN', 'CycloneDX'],
     github: 'https://github.com/s-uryansh/CipherFault',
@@ -39,7 +39,7 @@ export const projects: Project[] = [
   {
     name: 'AuthChain',
     tagline:
-      'Human-oversight layer for autonomous AI: routes security-sensitive tool calls through a custom blockchain pipeline for immutable, auditable, permissioned approval.',
+      'Hackathon project. Solo blockchain developer. Built a human oversight layer for autonomous AI: routes security sensitive tool calls through a custom blockchain pipeline for immutable, auditable, permissioned approval.',
     category: 'Blockchain',
     tags: ['Go', 'React', 'FastAPI', 'Blockchain', 'LLM'],
     github: 'https://github.com/s-uryansh/AuthChain',
@@ -48,7 +48,7 @@ export const projects: Project[] = [
   {
     name: 'Vanguard Linux PoC',
     tagline:
-      'Hardware-anchored TPM 2.0 attestation path for Linux, closing the relay attack via RFC 9266 TLS channel binding.',
+      'Hardware anchored TPM 2.0 attestation path for Linux, closing the relay attack via RFC 9266 TLS channel binding.',
     category: 'Security',
     tags: ['Go', 'C', 'eBPF', 'TPM 2.0', 'QEMU/KVM'],
     github: 'https://github.com/s-uryansh/Vanguard',
@@ -56,8 +56,8 @@ export const projects: Project[] = [
   {
     name: 'GradPQC',
     tagline:
-      'Enterprise quantum-breach prediction platform: Monte Carlo simulations + ML Shadow IT detection for NIST IR 8547 compliance.',
-    category: 'Full-Stack',
+      'Enterprise quantum breach prediction platform: Monte Carlo simulations + ML Shadow IT detection for NIST IR 8547 compliance.',
+    category: 'Full Stack',
     tags: ['Go', 'Next.js', 'MySQL', 'Monte Carlo'],
     github: 'https://github.com/s-uryansh/GradPQC',
     badge: 'PNB PSB Hackathon 2026',
@@ -65,42 +65,32 @@ export const projects: Project[] = [
   {
     name: 'Microtek IDM',
     tagline:
-      '10-module serial-level warehouse ops system; deny-by-default RBAC, versioned PostgreSQL migrations, Redis rate limiting.',
-    category: 'Full-Stack',
+      '10 module serial level warehouse ops system. Deny by default RBAC, versioned PostgreSQL migrations, Redis rate limiting.',
+    category: 'Full Stack',
     tags: ['Node.js', 'React 19', 'PostgreSQL', 'Redis', 'Zod'],
     github: '#',
   },
   {
-    name: 'Auth — PQ Crypto Protocol',
+    name: 'Auth: PQ Crypto Protocol',
     tagline:
-      'ML-KEM-768 + AES-256-GCM hybrid registration/auth protocol (FIPS 203) with split-knowledge enforcement in C++17.',
+      'ML KEM 768 + AES 256 GCM hybrid registration/auth protocol (FIPS 203) with split knowledge enforcement in C++17.',
     category: 'Crypto',
-    tags: ['C++17', 'OpenSSL', 'liboqs', 'ML-KEM-768', 'GTest'],
+    tags: ['C++17', 'OpenSSL', 'liboqs', 'ML KEM 768', 'GTest'],
     github: 'https://github.com/s-uryansh/Auth',
   },
   {
     name: 'GradLedger',
     tagline:
-      'Decentralized alumni mentorship platform on Ethereum with face-verification, Solidity access control, and JWT-gated APIs.',
+      'Decentralized alumni mentorship platform on Ethereum with face verification, Solidity access control, and JWT gated APIs.',
     category: 'Blockchain',
     tags: ['Solidity', 'Go', 'Python', 'Next.js', 'MongoDB'],
     github: 'https://github.com/s-uryansh/GradLedger',
   },
   {
-    name: 'MorphDAG',
-    tagline:
-      'Workload-aware DAG blockchain execution engine achieving 4.3× throughput, published at IEEE 2025.',
-    category: 'Blockchain',
-    tags: ['Go', 'EVM', 'Concurrent Systems'],
-    github: 'https://github.com/s-uryansh/MorphDAG',
-    paper: 'https://ieeexplore.ieee.org/document/11310865/',
-    badge: 'IEEE Published',
-  },
-  {
     name: 'gladmeds',
     tagline:
-      'Privacy-first AI healthcare platform: medicine scanner, emergency SOS, nearby hospital locator, and PDF health export.',
-    category: 'Full-Stack',
+      'Privacy first AI healthcare platform: medicine scanner, emergency SOS, nearby hospital locator, and PDF health export.',
+    category: 'Full Stack',
     tags: ['React', 'AI', 'Google SSO', 'PDF export'],
     github: '#',
     demo: 'http://gladmeds.vercel.app/',
@@ -111,7 +101,7 @@ export const categories = [
   'All',
   'Security',
   'Systems',
-  'Full-Stack',
+  'Full Stack',
   'Blockchain',
   'Crypto',
 ] as const;
@@ -119,7 +109,7 @@ export const categories = [
 export const categoryColor: Record<ProjectCategory, string> = {
   Security: 'var(--violet)',
   Systems: 'var(--cyan)',
-  'Full-Stack': 'var(--amber)',
+  'Full Stack': 'var(--amber)',
   Blockchain: 'var(--green)',
   Crypto: 'var(--green)',
 };

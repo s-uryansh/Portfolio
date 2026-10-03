@@ -9,7 +9,7 @@ const roles = [
   'Systems Engineer',
   'Security Researcher',
   'Go / eBPF Developer',
-  'Full-Stack Builder',
+  'Full Stack Builder',
 ];
 
 const socials = [
@@ -19,10 +19,10 @@ const socials = [
 ];
 
 const credentials = [
-  'Shiv Nadar University · B.Tech CSE · 2023–2027',
-  'SWE Intern @ Abacus Desk',
+  'Software Engineer · Go · Linux · C/C++',
   'IEEE Published',
-  'Smart SNU Hackathon ’25 Winner',
+  'Ex SWE Intern @ Abacus Desk & CodeClowns',
+  "SNU CSE '27",
 ];
 
 export default function Header() {
